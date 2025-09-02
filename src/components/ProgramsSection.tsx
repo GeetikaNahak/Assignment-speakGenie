@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 
 const ProgramsSection = () => {
   const programs = [
@@ -30,52 +31,78 @@ const ProgramsSection = () => {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Programs for Every Age
           </h2>
           <p className="text-lg text-gray-600">
             Age-appropriate mindfulness programs that grow with your child.
           </p>
-        </div>
-        
+        </motion.div>
+
+        {/* Program Cards */}
         <div className="space-y-20">
           {programs.map((program, index) => (
-            <div key={program.id} className={`grid lg:grid-cols-2 gap-12 items-center ${
-              index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-            }`}>
-              <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+            <motion.div
+              key={program.id}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className={`grid lg:grid-cols-2 gap-12 items-center ${
+                index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+              }`}
+            >
+              <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                 <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
                   {program.title}
                 </h3>
                 <p className="text-lg text-gray-600 mb-6">
                   {program.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-3 mb-8">
                   {program.features.map((feature, idx) => (
-                    <span key={idx} className="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    <span
+                      key={idx}
+                      className="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm"
+                    >
                       {feature}
                     </span>
                   ))}
                 </div>
-                
-                <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
+
+                <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium cursor-pointer">
                   Start Program
                 </button>
               </div>
-              
-              <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                <div className="relative">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${program.gradient} rounded-2xl transform rotate-3`}></div>
-                  <img 
+
+              <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${program.gradient} rounded-2xl transform rotate-3`}
+                  ></div>
+                  <img
                     src={program.image}
                     alt={program.title}
                     className="relative rounded-2xl shadow-2xl w-full h-96 object-cover"
                   />
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { Check } from 'lucide-react';
 
 const PricingSection = () => {
@@ -93,7 +92,10 @@ const PricingSection = () => {
                 ))}
               </ul>
               
-              <button className={`w-full py-3 rounded-lg font-medium transition-colors ${plan.buttonClass}`}>
+              {/* Added cursor-pointer */}
+              <button
+                className={`w-full py-3 rounded-lg font-medium transition-colors cursor-pointer ${plan.buttonClass}`}
+              >
                 {plan.buttonText}
               </button>
             </div>
