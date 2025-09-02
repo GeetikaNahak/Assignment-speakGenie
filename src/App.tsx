@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import WhySection from './components/WhySection';
 import ProgramsSection from './components/ProgramsSection';
 import FeaturesSection from './components/FeaturesSection';
-import ComparisonSection from './components/ComparisonSection';
+import ComparisonSection from './components/ComparisionSection';
 import PricingSection from './components/PricingSection';
 import ParentHubSection from './components/ParentHubSection';
 import TestimonialsSection from './components/TestimonialsSection';
